@@ -1,11 +1,18 @@
 import Product from "../models/product.js";
 
 export default class ProductRepository {
-  add() {}
+  async add(data) {
+    try {
+      const product = await Product(data).save();
+      return product
+    } catch (err) {
+      console.log(err);
+    }
+  }
   async list() {
     try {
-      const product = await Product({ name: "jithu" }).save();
-      console.log("jithuraj", product);
+      const products = await Product.find();
+      return products;
     } catch (err) {
       console.log(err);
     }
