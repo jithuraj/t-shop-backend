@@ -19,12 +19,12 @@ export default class ProductController {
         res.status(200).json({ status: false, message: productMessages.addFail })
       }
     } catch (err) {
-      console.log('jithuraj', err);
+      console.log( err);
       res.status(500).json({ status: false, message: productMessages.addFail });
     }
   }
 
-  list = async (_, res) => {
+  list =  async (_, res) => {
     try {
       const products = await this.productRepository.list();
       const data = products.map(product => productResource(product));
@@ -38,7 +38,7 @@ export default class ProductController {
           .json({ status: false, message: productMessages.listFail });
       }
     } catch (err) {
-      console.log("jithuraj", err);
+      console.log(err);
       res
         .status(500)
         .json({ status: false, message: productMessages.listFail });
