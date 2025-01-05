@@ -1,8 +1,10 @@
 const productMessages = {
   listFail: "Failed to list products.",
   listSuccess: "Products listed successfully.",
-  addSuccess: "Product added successfully.",
-  addFail: "Failed to add product.",
+  addsuccess: "product added successfully.",
+  addfail: "failed to add product.",
+  deleteSuccess: "product deleted successfully.",
+  deleteFail: "failed to delete product.",
 };
 
 export default productMessages;

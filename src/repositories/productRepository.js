@@ -9,6 +9,14 @@ export default class ProductRepository {
       console.log(err);
     }
   }
+  async delete(id) {
+    try {
+      await Product.deleteOne({ _id: id });
+      return true
+    } catch (err) {
+      console.log(err);
+    }
+  }
   async list() {
     try {
       const products = await Product.find();
