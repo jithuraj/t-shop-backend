@@ -4,7 +4,7 @@ export default class ProductRepository {
   async add(data) {
     try {
       const product = await Product(data).save();
-      return product
+      return product;
     } catch (err) {
       console.log(err);
     }
@@ -12,7 +12,8 @@ export default class ProductRepository {
   async list() {
     try {
       const products = await Product.find();
-      return products;
+      const reversedProducts = products.reverse();
+      return reversedProducts;
     } catch (err) {
       console.log(err);
     }

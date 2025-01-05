@@ -4,34 +4,45 @@ import validateProductAdd from "../requests/add.js";
 import productResource from "../resources/productResource.js";
 
 export default class ProductController {
-
   constructor() {
     this.productRepository = new ProductRepository();
   }
 
   add = async (req, res) => {
     try {
-      const requestData = validateProductAdd(req.body)
+      const requestData = validateProductAdd(req.body);
       const product = await this.productRepository.add(requestData);
       if (product) {
-        res.status(200).json({ status: true, message: productMessages.addSuccess, data: product })
+        res
+          .status(200)
+          .json({
+            status: true,
+            message: productMessages.addSuccess,
+            data: product,
+          });
       } else {
-        res.status(200).json({ status: false, message: productMessages.addFail })
+        res
+          .status(200)
+          .json({ status: false, message: productMessages.addFail });
       }
     } catch (err) {
-      console.log( err);
+      console.log(err);
       res.status(500).json({ status: false, message: productMessages.addFail });
     }
-  }
+  };
 
-  list =  async (_, res) => {
+  list = async (_, res) => {
     try {
       const products = await this.productRepository.list();
-      const data = products.map(product => productResource(product));
+      const data = products.map((product) => productResource(product));
       if (products.length > 0) {
         res
           .status(200)
-          .json({ status: true, message: productMessages.listSuccess, data: data });
+          .json({
+            status: true,
+            message: productMessages.listSuccess,
+            data: data,
+          });
       } else {
         res
           .status(200)
